@@ -1,0 +1,117 @@
+@import "./variables";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0 !important;
+}
+
+body {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  transition: all 0.5s ease;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 9px;
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  background: $blue;
+}
+
+/**/
+.ant-layout,
+.ant-layout-header .ant-menu {
+  /* background: none !important; */
+  padding: 0px !important;
+}
+
+.ant-layout-header {
+  height: 64px !important;
+  padding: 0 !important;
+}
+
+.ant-menu-item {
+  transition: all 0.5s ease !important;
+}
+
+.ant-menu .header__right {
+  margin-top: -1px !important;
+}
+
+.ant-menu-item-selected {
+  -webkit-box-shadow: 0px 0px 3px 0px $blue !important;
+  box-shadow: 0px 0px 3px 0px $blue !important;
+}
+
+.header .ant-anchor-wrapper {
+  background: none;
+}
+
+.header .ant-anchor {
+  display: flex;
+}
+
+/* .ant-menu-horizontal>.ant-menu-item::after, .ant-menu-horizontal>.ant-menu-submenu::after {
+  bottom: 15px !important;
+} */
+
+@media screen and (max-width: 1284px) {
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item,
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
+    padding: 0 16px !important;
+  }
+}

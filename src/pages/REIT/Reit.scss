@@ -1,0 +1,28 @@
+@import "../../variables";
+
+.reit {
+  margin: auto;
+  display: flex;
+  gap: 20px;
+  padding-top: 70px;
+  width: 70vw;
+
+  @mixin card {
+    @include box;
+    border-radius: 1rem !important;
+  }
+
+  &__card {
+    @include card;
+    width: 60%;
+  }
+
+  &__card-small {
+    @include card;
+    width: 40%;
+  }
+
+  &__div {
+    @include flex;
+  }
+}

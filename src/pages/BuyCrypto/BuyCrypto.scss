@@ -1,0 +1,16 @@
+@import "../../variables";
+
+.buycrypto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 0;
+
+  &__iframe {
+    @include box;
+    width: 420px;
+    height: 625px;
+    border-radius: 1rem;
+    background-color: white;
+  }
+}

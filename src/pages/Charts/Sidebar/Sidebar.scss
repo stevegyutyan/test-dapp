@@ -1,0 +1,19 @@
+.sidebar {
+  // position: fixed;
+  // top: 90;
+  // overflow-y: scroll;
+  // height: 400px;
+
+  &__list {
+    // overflow-y: scroll;
+    // height: 500px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    padding: 5px;
+  }
+}

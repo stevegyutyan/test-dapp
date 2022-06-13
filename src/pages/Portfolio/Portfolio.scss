@@ -1,0 +1,9 @@
+.portfolio {
+//   padding: 70px 0;
+
+  &__slice {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
