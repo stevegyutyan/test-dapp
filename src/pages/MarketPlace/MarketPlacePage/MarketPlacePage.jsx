@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import './SingleCoin.scss'
+import './MarketPlacePage.scss'
 
-function SingleCoin() {
+const MarketPlacePage = () => {
     const { id } = useParams();
     const [coin, setCoin] = useState([]);
 
@@ -30,4 +30,4 @@ function SingleCoin() {
     )
 }
 
-export default SingleCoin
+export default MarketPlacePage

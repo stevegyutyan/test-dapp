@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import Heading from "components/Heading/Heading";
 import Staking from 'pages/Staking/Staking';
 import MarketPlace from "pages/MarketPlace/MarketPlace";
-import SingleCoin from "pages/MarketPlace/SingleCoin/SingleCoin";
+import MarketPlacePage from "pages/MarketPlace/MarketPlacePage/MarketPlacePage";
 import Charts from "pages/Charts/Charts";
-// import ChartsPages from "pages/Charts/SingleChart/ChartsPages";
+import ChartsPages from "pages/Charts/ChartsPages/ChartsPages";
 import Exchange from "pages/Exchange/Exchange";
 import BuyCrypto from "pages/BuyCrypto/BuyCrypto";
 import Reit from "pages/REIT/Reit";
@@ -30,8 +30,9 @@ const BrowserRouter = ({ isServerInfo }) => {
                         <Staking isServerInfo={isServerInfo} />
                     </Route>
                     <Route exact path="/marketplace" component={MarketPlace} />
-                    <Route path="/marketplace/:id" component={SingleCoin} />
-                    <Route path="/charts" component={Charts}/>
+                    <Route path="/marketplace/:id" component={MarketPlacePage} />
+                    <Route exact path="/charts" component={Charts} />
+                    <Route path="/charts/:id" component={ChartsPages} />
                     {/* <Route path="/charts/:id">
                         <ChartsPages />
                     </Route> */}
@@ -48,10 +49,10 @@ const BrowserRouter = ({ isServerInfo }) => {
                             </Tabs.TabPane>
                         </Tabs>
                     </Route>
-                    <Route path="/buy-crypto" component={BuyCrypto}/>
-                    <Route path="/portfolio" component={Portfolio}/>
-                    <Route path="/reit" component={Reit}/>
-                    <Route path="/bots" component={Bots}/>
+                    <Route path="/buy-crypto" component={BuyCrypto} />
+                    <Route path="/portfolio" component={Portfolio} />
+                    <Route path="/reit" component={Reit} />
+                    <Route path="/bots" component={Bots} />
                     <Route path="/">
                         <Redirect to="/staking" />
                     </Route>
