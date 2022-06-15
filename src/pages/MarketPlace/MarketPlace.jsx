@@ -4,24 +4,26 @@ import axios from 'axios'
 // import { AiOutlineStar } from 'react-icons/ai';
 import './MarketPlace.scss'
 import { moneyFormater } from 'helpers/formatters'
+import { useHistory } from "react-router-dom"
 
 const MarketPlace = () => {
+    let history = useHistory();
     const [coins, setCoins] = useState([]);
-
-    useEffect(() => {
-        fetchCoin();
-    }, [])
 
     const fetchCoin = async () => {
         try {
             const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d';
             const response = await axios.get(url);
             setCoins(response.data);
-            console.log(response.data);
+            // console.log(response.data);
         } catch (error) {
             console.log(`Error: ${error.message}`);
         }
     }
+
+    useEffect(() => {
+        fetchCoin();
+    }, [])
 
     const columns = [
         {
@@ -97,17 +99,18 @@ const MarketPlace = () => {
         },
         {
             title: 'Last 7 Days',
-            dataIndex: 'last 7 days',
+            dataIndex: 'lastDays7',
             align: 'right',
             key: 'm10',
         },
     ];
 
-    const modifiedCoinsData = coins.map(({ body, ...item }) => ({
-        // ...item,
+    // const modifiedCoinsData = coins.map(({ body, ...item }) => ({
+    const modifiedCoinsData = coins.map((item) => ({
+        key: item.id,
         marketRank: item.market_cap_rank,
         coin:
-            <div style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+            <div onClick={() => history.push(`/marketplace/${item.id}`)} style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
                 <img width="20px" src={item.image} alt="Coin_img" />
                 <h3>{item.name}</h3>
             </div>,
@@ -118,8 +121,7 @@ const MarketPlace = () => {
         fixedPrice7: Number(item.price_change_percentage_7d_in_currency).toFixed(1),
         fixedVolume24: moneyFormater(item.total_volume),
         mktCap: moneyFormater(item.market_cap),
-        key: item.id,
-        message: body
+        // message: body
     }));
 
     return (
@@ -131,13 +133,15 @@ const MarketPlace = () => {
                     columns={columns}
                     dataSource={modifiedCoinsData}
                     pagination={false}
-                // expandedRowRender
-                // bordered
                 // rowSelection={{
-                //     onSelect: () => {
+                //     onSelect: (record) => {
+                //         history.push("/:id");
+                //         console.log(record);
                 //     },
                 //     hideSelectAll: true
                 // }}
+                // expandedRowRender
+                // bordered
                 // scroll={{
                 //     x: 1500,
                 //     y: 555,

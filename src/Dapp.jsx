@@ -1,6 +1,7 @@
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
-import Staking from "pages/Staking/Staking";
+// import BrowserRouter from "components/BrowserRouter/BrowserRouter";
+// import Staking from "pages/Staking/Staking";
 
 export const Dapp = () => {
     const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
@@ -15,14 +16,16 @@ export const Dapp = () => {
     if (isServerInfo)
         return (
             <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
-                <App isServerInfo />
+                {/* <BrowserRouter> */}
+                    <App isServerInfo />
+                {/* </BrowserRouter> */}
             </MoralisProvider>
         );
-    else {
-        return (
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                <Staking />
-            </div>
-        );
-    }
+    // else {
+    //     return (
+    //         <div style={{ display: "flex", justifyContent: "center" }}>
+    //             <Staking />
+    //         </div>
+    //     );
+    // }
 };

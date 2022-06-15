@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Heading from "components/Heading/Heading";
 import Staking from 'pages/Staking/Staking';
+import MarketPlace from "pages/MarketPlace/MarketPlace";
+import SingleCoin from "pages/MarketPlace/SingleCoin/SingleCoin";
 import Charts from "pages/Charts/Charts";
-import ChartsPages from "pages/Charts/ChartsPages/ChartsPages";
+// import ChartsPages from "pages/Charts/SingleChart/ChartsPages";
 import Exchange from "pages/Exchange/Exchange";
 import BuyCrypto from "pages/BuyCrypto/BuyCrypto";
 import Reit from "pages/REIT/Reit";
@@ -11,9 +13,9 @@ import Portfolio from "pages/Portfolio/Portfolio";
 import Footing from 'components/Footing'
 import { ETHLogo, BSCLogo, PolygonLogo } from './Icons'
 import { Layout, Tabs } from "antd";
-import MarketPlace from "pages/MarketPlace/MarketPlace";
 
-const { Header, Footer } = Layout
+// const { Header, Footer } = Layout
+const { Header } = Layout
 
 const BrowserRouter = ({ isServerInfo }) => {
     return (
@@ -27,15 +29,12 @@ const BrowserRouter = ({ isServerInfo }) => {
                     <Route exact path="/staking">
                         <Staking isServerInfo={isServerInfo} />
                     </Route>
-                    <Route path="/marketplace">
-                        <MarketPlace />
-                    </Route>
-                    <Route path="/charts">
-                        <Charts />
-                    </Route>
-                    <Route path="/charts/:id">
+                    <Route exact path="/marketplace" component={MarketPlace} />
+                    <Route path="/marketplace/:id" component={SingleCoin} />
+                    <Route path="/charts" component={Charts}/>
+                    {/* <Route path="/charts/:id">
                         <ChartsPages />
-                    </Route>
+                    </Route> */}
                     <Route path="/exchange">
                         <Tabs defaultActiveKey="1" style={{ alignItems: "center", paddingTop: "70px" }}>
                             <Tabs.TabPane tab={<ETHLogo />} key="1">
@@ -49,20 +48,10 @@ const BrowserRouter = ({ isServerInfo }) => {
                             </Tabs.TabPane>
                         </Tabs>
                     </Route>
-                    <Route path="/buy-crypto">
-                        <BuyCrypto />
-                    </Route>
-
-                    <Route path="/portfolio">
-                        <Portfolio />
-                    </Route>
-
-                    <Route path="/reit">
-                        <Reit />
-                    </Route>
-                    <Route path="/bots">
-                        <Bots />
-                    </Route>
+                    <Route path="/buy-crypto" component={BuyCrypto}/>
+                    <Route path="/portfolio" component={Portfolio}/>
+                    <Route path="/reit" component={Reit}/>
+                    <Route path="/bots" component={Bots}/>
                     <Route path="/">
                         <Redirect to="/staking" />
                     </Route>

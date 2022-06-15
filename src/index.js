@@ -1,4 +1,4 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import "./index.scss";
@@ -12,11 +12,9 @@ const themes = {
 };
 
 ReactDOM.render(
-  <StrictMode>
-    <ThemeSwitcherProvider themeMap={themes} defaultTheme="dark">
-      <Dapp />
-    </ThemeSwitcherProvider>
-  </StrictMode>,
+  <ThemeSwitcherProvider themeMap={themes} defaultTheme="dark">
+    <Dapp />
+  </ThemeSwitcherProvider>,
   document.getElementById("root")
 );
 
